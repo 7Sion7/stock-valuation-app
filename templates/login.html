@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+<h1 class="text-center">Sign In</h1>
+<div class="register-form d-flex justify-content-center">
+    <form action="/login" method="post">
+        <div class="mb-3" style="width: 200px;">
+            <label for="username" class="form-label">Enter Username:</label>
+            <input required class="form-control mx-auto w-auto" name="username" type="text" placeholder="New Username"  autofocus autocomplete="off">
+        </div>
+        <div class="mb-3" style="width: 200px;">
+            <label for="password" class="form-label">Enter Password:</label>
+            <input required class="form-control mx-auto w-auto" type="password"  name="password" placeholder="New Password" autocomplete="off">
+        </div>
+        <div class="d-flex justify-content-center">
+            <button class="btn btn-primary" type="submit">Log In</button>
+        </div>
+    </form>
+</div>
+
+
+
+
+
+{% endblock %}

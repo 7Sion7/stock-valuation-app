@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <table>
+        <tr>
+            <th>Year</th>
+            <th>Dividend</th>
+        </tr>
+        {# Debug print #}
+        {{ stock.dividends_history | safe }}
+        {% for year, cash in stock.dividends_history.items() %}
+        <tr>
+            <td>{{ year }}</td>
+            <td>{{ cash }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

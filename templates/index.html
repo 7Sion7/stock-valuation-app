@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <section class="home">
+    <h1 class="text-center">Search 4 Stock Shares</h1>
+    <div class="d-flex mb-3 justify-content-center">
+            <form action="/get_annual_returns" method="post" class="d-flex">
+                <input class="form-control  me-2" style="width: 300px;" name="symbol" type="text" autocomplete="off" placeholder="Enter name or symbol..." id="search-bar">
+                <button type="submit" class="btn btn-outline-light">Search</button>
+            </form>
+    </div>
+
+
+    <div  id="calculator-link" class="d-flex justify-content-center">
+            <a class="nav-link" href="/calculator">
+                <i class="fas fa-calculator me-2"></i>Calculate Cap Price Manually
+                </a>
+    </div>
+        
+    </section>
+
+{% endblock %}

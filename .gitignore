@@ -1,0 +1,6 @@
+_pycache_
+flask_session
+.env
+stock_valuation.db
+venv
+requirements.txt

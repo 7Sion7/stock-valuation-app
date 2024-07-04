@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<div class="stock-data">
+    <form id="favourite">
+        <!-- Hidden inputs to store stock data -->
+        <input type="hidden" name="name" value="{{ stock.name }}">
+        <input type="hidden" name="price" value="{{ stock.price }}">
+        <input type="hidden" name="annual_return" value="{{ stock.annual_return }}">
+        <input type="hidden" name="percentage" value="{{ stock.percentage }}">
+        <input type="hidden" name="cap_price" value="{{ stock.cap_price }}">
+        <input type="hidden" name="dividends_history" value="{{ stock.dividends_history | tojson }}">
+
+        <!-- Save button -->
+        <button id="save-button" type="button" class="save-button">
+            <i class="far fa-heart"></i>
+        </button>
+    </form>
+    
+    <div id="table">
+        <h1>About {{ stock.name }}</h1>
+        <table class="table table-bordered table-striped">
+            <thead class="thead-light">
+                <tr>
+                    <th>Symbol</th>
+                    <th>Price</th>
+                    <th>Annual Returns in Dividends</th>
+                    <th>Percentage of Annual Return in Dividends</th>
+                    <th>Cap Price</th>
+                </tr>
+            </thead>
+            <tbody>
+               <tr>
+                    <td>{{ stock.name }}</td>
+                    <td class="{{stock.class}}">{{ stock.price }}</td>
+                    <td>{{ stock.annual_return }}</td>
+                    <td class="{{stock.class}}">{{ stock.percentage }}%</td>
+                    <td>{{ stock.cap_price }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>Dividend History</h4>
+        <table class="table table-bordered table-striped">
+            <thead class="thead-light">
+                <tr>
+                    <th>Year</th>
+                    <th>Dividend</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for year, cash in stock.dividends_history.items() %}
+                <tr>
+                    <td>{{ year }}</td>
+                    <td>{{ cash | usd}}</td>
+                </tr>
+                {% endfor %}
+                    <td><strong>Average Annual Returns</strong></td>
+                    <td><strong>{{ stock.annual_return }}</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
